@@ -5,6 +5,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import HomeLower from "../../HomeMiddle/HomeLower";
 import p2 from '../../../assets/p2.webp'
+import p4 from '../../../assets/p4.jpg'
 
 const Home = () => {
   const { posts } = useSelector((st) => st.auth);
@@ -21,9 +22,14 @@ const Home = () => {
       <div className="relative overflow-hidden z-10">
         <div className="w-full">
           <img
-            src={p2||"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"}
+            src={p2 || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"}
             alt="Electronics Banner"
-            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-cover transform hover:scale-105 transition-all duration-700"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-co transform hover:scale-105 transition-all duration-700 hidden md:block"
+          />
+          <img
+            src={p4 || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"}
+            alt="Electronics Banner"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-co transform hover:scale-105 transition-all duration-700 md:hidden"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent"></div>
         </div>
@@ -60,9 +66,9 @@ const Home = () => {
                     post={item}
                   />
                 ))}
-               
+
               </div> <button className="flex justify-center items-center place-content-center mx-auto"><Link to={"/explore"}
-              className="bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition-all duration-300 text-s font-medium disabled:bg-blue-400 disabled:cursor-not-allowed px-3 my-4 text-lg">see all</Link></button>
+                className="bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition-all duration-300 text-s font-medium disabled:bg-blue-400 disabled:cursor-not-allowed px-3 my-4 text-lg">see all</Link></button>
             </div>
           ) : null;
         })}
@@ -73,27 +79,27 @@ const Home = () => {
       </div>
 
 
-      {/* Latest Products Section */ }
-  
+      {/* Latest Products Section */}
 
-  {/* Promotional Banner */ }
-  <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 relative z-10">
-    <div className="container mx-auto px-4 text-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-md">
-        Spring Tech Sale
-      </h2>
-      <p className="mt-2 text-base sm:text-lg opacity-90 drop-shadow-sm">
-        Up to 40% off on selected gadgets!
-      </p>
-      <Link to="/explore">
-        <button className="mt-6 px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg">
-          Shop Deals Now
-        </button>
-      </Link>
-    </div>
-  </div>
 
-  {/* Animated Accents */ }
+      {/* Promotional Banner */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 relative z-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-md">
+            Spring Tech Sale
+          </h2>
+          <p className="mt-2 text-base sm:text-lg opacity-90 drop-shadow-sm">
+            Up to 40% off on selected gadgets!
+          </p>
+          <Link to="/explore">
+            <button className="mt-6 px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg">
+              Shop Deals Now
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Animated Accents */}
       <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
       <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl animate-float-slow"></div>
     </div >
