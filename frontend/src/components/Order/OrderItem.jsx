@@ -35,7 +35,7 @@ const OrdersItem = ({ orders }) => {
     try {
       const data = await axios.post(
         `${url}/post/cancel-order`,
-        { orderId: orders._id },
+        { orderId: orders?._id },
         {
           withCredentials: true,
           withXSRFToken: true,
@@ -113,15 +113,15 @@ const OrdersItem = ({ orders }) => {
             <div className="text-gray-300 text-sm sm:text-base space-y-2">
               <p>
                 <span className="font-semibold text-blue-400">Price:</span>{" "}
-                ${orders?.postPrice?.toFixed(2) || "N/A"}
+                ₹{orders?.postPrice?.toFixed(2) || "N/A"}
               </p>
               <p>
                 <span className="font-semibold text-blue-400">User ID:</span>{" "}
-                {orders?.user.slice(16, 28)}
+                {orders?.user?.slice(16, 28)}
               </p>
               <p>
                 <span className="font-semibold text-blue-400">Product ID:</span>{" "}
-                {orders?.post[0].post.slice(16, 28)}
+                {orders?.post[0]?.post.slice(16, 28)}
               </p>
               <p>
                 <span className="font-semibold text-blue-400">Quantity:</span>{" "}

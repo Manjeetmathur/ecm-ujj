@@ -48,7 +48,7 @@ function Post({ post }) {
     <div className="bg-gray-800 shadow-lg rounded-xl overflow-hidden p-6 relative transition-transform duration-300 hover:scale-[1.02]">
       {/* Post Header */}
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold text-white">{post.postTitle}</h2>
+        <h2 className="text-2xl font-bold text-white">{post?.postTitle}</h2>
         <button
           onClick={handleMenuClick}
           className="text-gray-400 hover:text-gray-200 transition"
@@ -111,15 +111,15 @@ function Post({ post }) {
 
       {/* Post Image */}
       <img
-        src={post.postImage}
+        src={post?.postImage}
         className="w-full h-56 object-cover rounded-lg mb-4 shadow-md"
         alt="Post"
       />
 
       {/* Post Content */}
-      <p className="text-gray-300">{post.postContent}</p>
+      <p className="text-gray-300">{post?.postContent}</p>
       <p className="text-lg font-semibold text-blue-400 mt-2">
-        Price: ₹{post.postPrice}
+        Price: ₹{post?.postPrice}
       </p>
     </div>
   );

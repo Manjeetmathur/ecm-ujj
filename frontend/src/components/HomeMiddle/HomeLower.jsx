@@ -85,11 +85,11 @@ const HomeLower = ({ post }) => {
               <div className="my-6 px-2">
                      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 max-w-sm mx-auto">
                             {/* Product Image */}
-                            <Link to={`/product/${post._id}`}>
+                            <Link to={`/product/${post?._id}`}>
                                    <div className="relative">
                                           <img
                                                  src={post?.postImage || "https://via.placeholder.com/300"}
-                                                 alt={post.postTitle}
+                                                 alt={post?.postTitle}
                                                  className="w-full h-56 object-contain transition-transform duration-300 hover:scale-105"
                                           />
                                           <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
@@ -101,16 +101,16 @@ const HomeLower = ({ post }) => {
                             {/* Product Details */}
                             <div className="p-4 border-t-2 mt-3 bg-blue-300">
                                    <h2 className="text-lg font-semibold text-gray-800 truncate">
-                                          {post.postTitle}
+                                          {post?.postTitle}
                                    </h2>
                                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                                          {post.postContent.slice(0, 80)}...
+                                          {post?.postContent.slice(0, 80)}...
                                    </p>
 
                                    {/* Price and Quantity */}
                                    <div className="mt-3 flex items-center justify-between">
                                           <span className="text-xl font-bold text-gray-900">
-                                                 ${post.postPrice?.toFixed(2) || "N/A"}
+                                          ₹ {post?.postPrice?.toFixed(2) || "N/A"}
                                           </span>
                                           <div className="flex items-center bg-gray-100 rounded-full px-2 py-1">
                                                  <button

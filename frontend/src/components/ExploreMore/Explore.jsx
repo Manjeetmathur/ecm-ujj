@@ -34,17 +34,17 @@ const Explore = () => {
       <div className="container mx-auto relative z-10 ">
         {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-10 px-2">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <button
-              key={category.value}
-              onClick={() => setCat(category.value)}
+              key={category?.value}
+              onClick={() => setCat(category?.value)}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 shadow-md ${
-                cat === category.value
+                cat === category?.value
                   ? "bg-blue-600 text-white shadow-lg"
                   : "bg-gray-700/50 text-gray-300 hover:bg-blue-500 hover:text-white hover:shadow-lg"
               } backdrop-blur-sm`}
             >
-              {category.label}
+              {category?.label}
             </button>
           ))}
         </div>
