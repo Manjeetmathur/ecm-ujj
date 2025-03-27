@@ -49,11 +49,11 @@ const Home = () => {
         {["watch", "earphone", "smartphones"].map((category) => {
           const categoryPosts = posts?.filter((item) => item.postCategory === category);
 
-          return categoryPosts.length > 0 ? (
+          return categoryPosts?.length > 0 ? (
             <div key={category} className="mb-10">
               <h2 className="text-2xl font-bold mb-4 capitalize">{category}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {categoryPosts.slice(0, 4).map((item, idx) => (
+                {categoryPosts?.slice(0, 4).map((item, idx) => (
                   <HomeLower
                     key={idx}
                     className="bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
