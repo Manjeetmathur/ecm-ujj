@@ -64,7 +64,6 @@ const createPost = asyncHandler(async (req, res) => {
 
 const deletePost = asyncHandler(async (req, res) => {
        const { postId } = req.body
-       console.log(postId);
        
        const admin = req.user
        try {
@@ -108,7 +107,6 @@ const addToCart = asyncHandler(async (req, res) => {
 
               const cartPost = await Cart.findOne({ owner: user._id, post: postId })
 
-              console.log(cartPost);
               
               if (!cartPost) {
                      const cartpost = await Cart.create({
@@ -339,7 +337,6 @@ const getorderDetails = asyncHandler(async (req, res) => {
                      // }
 
               ])
-              console.log(orderuserDetails);
               
               res.status(200).json({
                      success: true,

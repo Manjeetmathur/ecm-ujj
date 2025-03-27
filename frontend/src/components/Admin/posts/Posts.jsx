@@ -17,7 +17,7 @@ function Post({ post }) {
   };
 
   const handleSaveEdit = () => {
-    console.log(editImage, editTitle, editContent, editPrice);
+    // console.log(editImage, editTitle, editContent, editPrice);
     setIsMenuOpen(false);
   };
 

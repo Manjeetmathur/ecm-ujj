@@ -60,7 +60,6 @@ const registerUser = asyncHandler(async (req, res) => {
       createdUser,
       role : admin ? 'admin' : null
     });
-    console.log(createdUser);
 
   } catch (error) {
     res.json({
