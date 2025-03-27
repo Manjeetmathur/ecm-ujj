@@ -29,7 +29,7 @@ const Home = () => {
           <img
             src={p4 || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"}
             alt="Electronics Banner"
-            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-co transform hover:scale-105 transition-all duration-700 md:hidden"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-cover transform hover:scale-105 transition-all duration-700 md:hidden"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent"></div>
         </div>
