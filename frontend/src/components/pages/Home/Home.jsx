@@ -23,14 +23,14 @@ const Home = () => {
           <img
             src={p2||"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"}
             alt="Electronics Banner"
-            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-cove transform hover:scale-105 transition-all duration-700"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] object-cover transform hover:scale-105 transition-all duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent"></div>
         </div>
         <div className="absolute inset-0 flex items-center justify-start px-6 sm:px-12">
           <div className="text-left max-w-lg">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-md">
-              Next-Gen Ujjwal-Gadgets
+              Ujjwal-Gadgets
             </h1>
             <p className="mt-2 text-base sm:text-lg md:text-xl text-gray-200 opacity-90 drop-shadow-sm">
               Upgrade your tech with cutting-edge electronics
