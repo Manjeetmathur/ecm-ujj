@@ -73,7 +73,7 @@ const Signup = () => {
                                    {/* Form */}
                                    <form onSubmit={handleSignup} className="space-y-6">
                                           {/* Profile Picture Field */}
-                                          <div>
+                                          {/* <div>
                                                  <label
                                                         htmlFor="profile"
                                                         className="block text-sm font-medium text-white drop-shadow-sm"
@@ -88,7 +88,7 @@ const Signup = () => {
                                                         required
                                                         className="mt-1 w-full px-4 py-3 bg-gray-100/80 border border-gray-400/50 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300 shadow-inner file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
                                                  />
-                                          </div>
+                                          </div> */}
 
                                           {/* Full Name Field */}
                                           <div>
