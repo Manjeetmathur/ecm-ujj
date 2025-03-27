@@ -94,7 +94,7 @@ const CartProduct = ({ product }) => {
         <div className="flex flex-col p-4">
           {/* Product Image */}
           <div className="flex-shrink-0 mb-4">
-            <Link to={`/post-item/${postData?._id}`}>
+            <Link to={`/product/${postData?._id}`}>
               <img
                 src={postData?.postImage || "https://via.placeholder.com/100"}
                 alt={postData?.postTitle || "Product Image"}

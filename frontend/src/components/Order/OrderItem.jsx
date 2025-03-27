@@ -101,7 +101,7 @@ const OrdersItem = ({ orders }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
             {/* Product Image */}
             <div className="flex-shrink-0">
-              <Link to={`/post-item/${imageId}`}>
+              <Link to={`/product/${imageId}`}>
                 <img
                   src={image || "https://via.placeholder.com/100"}
                   alt="Product"

@@ -109,7 +109,7 @@ const PostItem = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen  bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Subtle Texture Overlay */}
       <div
         className="absolute  inset-0 bg-no-repeat bg-[length:150px_150px] opacity-10"
@@ -118,7 +118,7 @@ const PostItem = () => {
         }}
       ></div>
 
-      <div className="bg-white/95 rounded-xl shadow-lg p-6 md:p-8 w-full max-w-4xl flex flex-col md:flex-row gap-8 transform hover:shadow-2xl transition-all duration-300 backdrop-blur-sm relative z-10">
+      <div className=" bg-gradient-to-br border-2 from-gray-900 via-gray-800 to-gray-700 rounded-xl shadow-lg p-6 md:p-8 w-full max-w-4xl flex flex-col md:flex-row gap-8 transform hover:shadow-2xl transition-all duration-300 backdrop-blur-sm relative z-10">
         {/* Subtle Glow Effect */}
         <div className="absolute inset-0 -z-10 bg-blue-500/10 blur-3xl rounded-xl scale-105 animate-pulse-slow"></div>
 
@@ -135,10 +135,10 @@ const PostItem = () => {
 
         {/* Product Details */}
         <div className="flex flex-col flex-1 space-y-6">
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 drop-shadow-sm">
+          <h2 className="text-2xl lg:text-3xl font-bold text-white drop-shadow-sm">
             {postData?.postTitle || "Product Title"}
           </h2>
-          <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
+          <p className="text-white text-base lg:text-lg leading-relaxed">
             {postData?.postContent || "No description available."}
           </p>
 
