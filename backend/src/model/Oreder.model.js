@@ -24,6 +24,9 @@ const OrderSchema = mongoose.Schema({
        address : {
               type : String,
        },
+       phone : {
+              type : String,
+       },
        user: {
               type: mongoose.Schema.Types.ObjectId,
               ref: "User",

@@ -109,7 +109,7 @@ const CartProduct = ({ product }) => {
               {postData?.postTitle || "Product Title"}
             </h3>
             <p className="text-lg font-bold text-blue-900 drop-shadow-sm">
-              ${postData?.postPrice?.toFixed(2) || "N/A"}
+              Rs. {postData?.postPrice?.toFixed(2) || "N/A"}
             </p>
 
             {/* Quantity Selector */}

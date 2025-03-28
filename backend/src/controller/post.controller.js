@@ -107,6 +107,7 @@ export const editPost = async(req,res) => {
 }
 export const changeOrderStatus = async(req,res) => {
        const { status,orderId } = req.body
+       console.log(status,orderId)
        const admin = req.user
        try {
 
