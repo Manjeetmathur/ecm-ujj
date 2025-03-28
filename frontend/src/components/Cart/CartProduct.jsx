@@ -136,7 +136,7 @@ const CartProduct = ({ product }) => {
                 className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-300 text-sm sm:text-base font-medium disabled:bg-blue-400 disabled:cursor-not-allowed w-full sm:w-auto shadow-md hover:shadow-lg"
                 disabled={bloading}
               >
-                <Link to={`/buy/${postData._id}`}>Buy Now</Link>
+                <Link to={`/buy/${postData?._id}`}>Buy Now</Link>
               </button>
               <button
                 onClick={removeToCart}
