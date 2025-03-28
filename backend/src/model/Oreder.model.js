@@ -21,6 +21,9 @@ const OrderSchema = mongoose.Schema({
               default : 'Pending',
               enum : ['Pending','Completed','Cancelled'],
        },
+       address : {
+              type : String,
+       },
        user: {
               type: mongoose.Schema.Types.ObjectId,
               ref: "User",

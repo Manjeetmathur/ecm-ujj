@@ -1,27 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import { dateFormat } from "../../DateFormat/DateFormat";
+import axios from "axios";
+import { url } from "../../bacxkendUrl/BackendUrl";
 
 const Orders = ({ order }) => {
   const orderDetails = order?.result;
+  const [editStatus, setEditStatus] = useState(false)
+  const [status, setStaus] = useState("Completed");
+  console.log(order)
+  const changeStatus = async () => {
+    try {
+      const res = await axios.patch(`${url}/post/edit-order-status`, { orderId: orderDetails._id, status }, {
+        headers: { "content-type": "application/json" },
+        withCredentials: true,
+        withXSRFToken: true,
+      })
+      console.log(res)
+      if(res.data.success){
+        window.location.reload()
+      }
+    } catch (error) {
 
+    }
+  }
   return (
-    <div className="border border-gray-700 bg-gray-800 text-white rounded-xl px-3 py-3 shadow-lg transition-transform duration-300 p-">
+    <div className="border border-gray-700 bg-gray-800 text-white rounded-xl px-3 py-3 shadow-lg transition-transform duration-300 relative">
       {/* Order ID */}
-      <div className="flex text-sm font-medium mb-2">
+      <button className="absolute top-5 right-5 text-2xl" onClick={() => setEditStatus(prev => !prev)}> 🔁 </button>
+      {editStatus &&
+        <div className="flex flex-col justify-center mb-4">
+          <div className="flex flex-col md:flex-row gap-4 mb-4 ">
+            <label className="flex items-center space-x-1">
+              <input
+                type="radio"
+                name="status"
+                value="Completed"
+                checked={status === "Completed"}
+                onChange={() => setStaus("Completed")}
+                className="form-radio h-5 w-5 text-blue-500"
+              />
+              <span className="text-lg">Completed</span>
+            </label>
+            <label className="flex items-center space-x-1">
+              <input
+                type="radio"
+                name="status"
+                value="Pending"
+                checked={status === "Pending"}
+                onChange={() => setStaus("Pending")}
+                className="form-radio h-5 w-5 text-blue-500"
+              />
+              <span className="text-lg">Pending</span>
+            </label>
+            <label className="flex items-center space-x-1">
+              <input
+                type="radio"
+                name="status"
+                value="Cancelled"
+                checked={status === "Cancelled"}
+                onChange={() => setStaus("Cancelled")}
+                className="form-radio h-5 w-5 text-blue-500"
+              />
+              <span className="text-lg">Cancelled</span>
+            </label>
+          </div>
+          <button className="place-content-center mx-auto border-2 p-2 rounded-lg bg-blue-400 text-black" onClick={changeStatus}>Change</button>
+        </div>
+      }
+      <div className="flex text-sm font-medium mb-2 justify-center items-center">
         <span className="text-gray-400 w-1/3">Order ID:</span>
-        <span className="w-2/3">{orderDetails?._id}</span>
+        <span className="w-2/3">{orderDetails?._id.slice(10)}</span>
       </div>
 
       {/* Product ID */}
       <div className="flex text-sm font-medium mb-2">
         <span className="text-gray-400 w-1/3">Product ID:</span>
-        <span className="w-2/3">{orderDetails?.post[0]?._id}</span>
+        <span className="w-2/3">{orderDetails?.post[0]?._id.slice(10)}</span>
       </div>
 
       {/* User */}
       <div className="flex text-sm font-medium mb-2">
         <span className="text-gray-400 w-1/3">User:</span>
-        <span className="w-2/3">{orderDetails?.user}</span>
+        <span className="w-2/3">{orderDetails?.user.slice(10)}</span>
+      </div>
+      {/* User */}
+      <div className="flex text-sm font-medium mb-2">
+        <span className="text-gray-400 w-1/3">Address:</span>
+        <span className="w-2/3">{orderDetails?.address}</span>
       </div>
 
       {/* Product Price */}

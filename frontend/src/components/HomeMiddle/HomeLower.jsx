@@ -8,7 +8,6 @@ import { IoCart } from "react-icons/io5";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 const HomeLower = ({ post }) => {
-       const [bloading, setbLoading] = useState(false);
        const [cloading, setcLoading] = useState(false);
        const [quantity, setQuantity] = useState(1);
        const navigate = useNavigate();
@@ -24,35 +23,7 @@ const HomeLower = ({ post }) => {
               }
        };
 
-       const orderItem = async () => {
-              try {
-                     if (!status) {
-                            throw new Error("User is not logged in");
-                     }
-                     setbLoading(true);
-                     const data = await axios.post(
-                            `${url}/post/order-item`,
-                            { postId: post._id, postPrice: post.postPrice, quantity },
-                            {
-                                   withCredentials: true,
-                                   withXSRFToken: true,
-                                   headers: { "content-type": "application/json" },
-                            }
-                     );
-                     const res = data.data;
-
-                     if (res.success) {
-                            toast.success("Order placed successfully!");
-                            navigate("/order-page");
-                     } else {
-                            toast.error("Something went wrong");
-                     }
-              } catch (error) {
-                     toast.error(error.message);
-              } finally {
-                     setbLoading(false);
-              }
-       };
+      
 
        const addToCart = async () => {
               try {
@@ -135,11 +106,10 @@ const HomeLower = ({ post }) => {
                                    {/* Buttons */}
                                    <div className="mt-4 grid grid-cols-2 gap-3">
                                           <button
-                                                 onClick={orderItem}
                                                  className="bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition-all duration-300 text-sm font-medium disabled:bg-blue-400 disabled:cursor-not-allowed"
-                                                 disabled={bloading}
+                                                 
                                           >
-                                                 {bloading ? "Processing..." : "Buy Now"}
+                                                <Link to={`/buy/${post._id}`}> Buy Now</Link>
                                           </button>
                                           <button
                                                  onClick={addToCart}

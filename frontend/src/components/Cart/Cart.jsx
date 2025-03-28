@@ -6,10 +6,10 @@ const Cart = () => {
   const { cartDetails } = useSelector((st) => st.auth);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-pink-300 via-gra-800 to-purple-400 py-8">
       <div className="container mx-auto px-4">
         {/* Page Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center uppercase text-white tracking-wide drop-shadow-md mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center uppercase  tracking-wide drop-shadow-md mb-8">
           Your Cart
         </h2>
 

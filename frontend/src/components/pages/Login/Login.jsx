@@ -54,23 +54,20 @@ const Login = () => {
        };
 
        return (
-              <div
-                     className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-gray-800 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-                    
-              >
+              <div className="min-h-screen bg-gradient-to-br from-pink-300 via-purple-300 to-blue-400 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
                      {/* Subtle Overlay Effect */}
-                     <div className="absolute inset-0 bg-black opacity-10 pointer-events-none"></div>
+                     <div className="absolute inset-0 bg-black opacity-5 pointer-events-none"></div>
 
-                     <div className="bg-gray-600 shadow-2xl rounded-xl p-8 max-w-md w-full space-y-8 transform hover:shadow-3xl transition-shadow duration-300 z-10 relative">
+                     <div className="bg-white shadow-2xl rounded-xl p-8 max-w-md w-full space-y-8 transform hover:shadow-3xl transition-shadow duration-300 z-10 relative">
                             {/* Glow Effect Behind Form */}
-                            <div className="absolute inset-0 -z-10 bg-blue-500/20 blur-3xl rounded-xl scale-105 animate-pulse-slow"></div>
+                            <div className="absolute inset-0 -z-10 bg-purple-500/20 blur-3xl rounded-xl scale-105 animate-pulse-slow"></div>
 
                             {/* Logo or Branding */}
                             <div className="text-center">
-                                   <h2 className="text-3xl font-bold text-white tracking-tight drop-shadow-md">
+                                   <h2 className="text-3xl font-bold text-gray-800 tracking-tight drop-shadow-md">
                                           TechTrend Login
                                    </h2>
-                                   <p className="mt-2 text-sm text-gray-300 drop-shadow-sm">
+                                   <p className="mt-2 text-sm text-gray-600 drop-shadow-sm">
                                           Access your electronics shopping experience
                                    </p>
                             </div>
@@ -81,10 +78,7 @@ const Login = () => {
                                    <form onSubmit={handleLogin} className="space-y-6">
                                           {/* Email Field */}
                                           <div>
-                                                 <label
-                                                        htmlFor="email"
-                                                        className="block text-sm font-medium text-white drop-shadow-sm"
-                                                 >
+                                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 drop-shadow-sm">
                                                         Email Address
                                                  </label>
                                                  <input
@@ -94,16 +88,13 @@ const Login = () => {
                                                         value={email}
                                                         onChange={(e) => setEmail(e.target.value)}
                                                         required
-                                                        className="mt-1 w-full px-4 py-3 bg-gray-100/80 border border-gray-400/50 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300 shadow-inner"
+                                                        className="mt-1 w-full px-4 py-3 bg-gray-100 border border-gray-300/50 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-all duration-300 shadow-inner"
                                                  />
                                           </div>
 
                                           {/* Password Field */}
                                           <div>
-                                                 <label
-                                                        htmlFor="password"
-                                                        className="block text-sm font-medium text-white drop-shadow-sm"
-                                                 >
+                                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 drop-shadow-sm">
                                                         Password
                                                  </label>
                                                  <input
@@ -113,14 +104,14 @@ const Login = () => {
                                                         value={password}
                                                         onChange={(e) => setPassword(e.target.value)}
                                                         required
-                                                        className="mt-1 w-full px-4 py-3 bg-gray-100/80 border border-gray-400/50 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300 shadow-inner"
+                                                        className="mt-1 w-full px-4 py-3 bg-gray-100 border border-gray-300/50 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-all duration-300 shadow-inner"
                                                  />
                                           </div>
 
                                           {/* Submit Button */}
                                           <button
                                                  type="submit"
-                                                 className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 text-base font-semibold disabled:bg-blue-400 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
+                                                 className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 text-base font-semibold disabled:bg-purple-400 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
                                                  disabled={loading}
                                           >
                                                  {loading ? "Signing In..." : "Sign In"}
@@ -128,11 +119,11 @@ const Login = () => {
                                    </form>
 
                                    {/* Sign Up Link */}
-                                   <p className="text-center text-sm text-gray-300 drop-shadow-sm">
+                                   <p className="text-center text-sm text-gray-600 drop-shadow-sm">
                                           New to TechTrend?{" "}
                                           <Link
                                                  to="/signup"
-                                                 className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-300"
+                                                 className="text-purple-600 hover:text-purple-500 font-medium transition-colors duration-300"
                                           >
                                                  Create an Account
                                           </Link>
@@ -141,8 +132,8 @@ const Login = () => {
                      </div>
 
                      {/* Optional Animated Accent */}
-                     <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
-                     <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl animate-float-slow"></div>
+                     <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-200/30 rounded-full blur-2xl animate-float"></div>
+                     <div className="absolute top-0 right-0 w-40 h-40 bg-blue-200/30 rounded-full blur-2xl animate-float-slow"></div>
               </div>
        );
 };

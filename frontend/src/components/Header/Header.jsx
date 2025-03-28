@@ -7,28 +7,24 @@ import { logout } from "../../store/authSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { url } from "../bacxkendUrl/BackendUrl";
-import p1 from "../../assets/p1.jpg"
+import p1 from "../../assets/p1.jpg";
 import { CiHome } from "react-icons/ci";
+
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { status, admin } = useSelector((st) => st.auth);
+  const { status, admin, userInfo } = useSelector((st) => st.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const logoutHandler = async () => {
     try {
-      const data = await axios.get(`${url}/user/logout`, {
-        withCredentials: true,
-        withXSRFToken: true,
-      });
-      const res = data.data;
-
-      if (res.success) {
+      const { data } = await axios.get(`${url}/user/logout`, { withCredentials: true });
+      if (data.success) {
         dispatch(logout());
-        toast.success(res.message);
+        toast.success(data.message);
         navigate("/login");
       } else {
-        toast.error(res.message);
+        toast.error(data.message);
       }
     } catch (error) {
       toast.error("An error occurred during logout.");
@@ -36,114 +32,83 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header className="bg-gradient-to-r from-pink-300 via-purple-300 to-blue-400 shadow-md sticky top-0 z-50 border-b border-gray-300/50">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img src={p1} alt="" className="w-[56px] md:w-[66px] rounded-2xl" />
-          <span className="text-2xl md:text-3xl font-bold tracking-tight">
-            TechTrend
-          </span>
-          
+        <Link to="/" className="flex items-center space-x-3">
+          <img src={p1} alt="Logo" className="w-[50px] rounded-full border-2 border-white shadow-sm" />
+          <span className="text-xl font-bold text-gray-800 drop-shadow-md">TechTrend</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
-          <Link
-            to="/"
-            className="text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-500 pb-1 transition-all duration-300 flex justify-center items-center gap-2"
-          >
-          <CiHome /> Home
-          </Link>
+        <nav className="hidden lg:flex items-center space-x-6">
+          <Link to="/" className="text-gray-700 hover:text-purple-600 transition font-medium">Home</Link>
+          <Link to="/about" className="text-gray-700 hover:text-purple-600 transition font-medium">About</Link>
           {status && !admin && (
-            <Link
-              to="/order-page"
-              className="text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-500 pb-1 transition-all duration-300 flex items-center"
-            >
-              <FiBox className="mr-2" /> Orders
-            </Link>
+            <Link to={`/profile/${userInfo._id}`} className="text-gray-700 hover:text-purple-600 transition font-medium">Profile</Link>
           )}
           {status && !admin && (
-            <Link
-              to="/cart"
-              className="text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-500 pb-1 transition-all duration-300 flex items-center"
-            >
-              <FiShoppingCart className="mr-2" /> Cart
+            <Link to="/order-page" className="text-gray-700 hover:text-purple-600 transition font-medium">Orders</Link>
+          )}
+          {status && !admin && (
+            <Link to="/cart" className="text-gray-700 hover:text-purple-600 transition flex items-center font-medium">
+              <FiShoppingCart className="mr-1" /> Cart
             </Link>
           )}
           {admin && (
-            <Link
-              to="/admin"
-              className="text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-500 pb-1 transition-all duration-300"
-            >
-              Dashboard
-            </Link>
+            <Link to="/admin" className="text-gray-700 hover:text-purple-600 transition font-medium">Dashboard</Link>
           )}
         </nav>
 
-        {/* Auth Buttons - Desktop */}
+        {/* Auth Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
           {status ? (
             <button
               onClick={logoutHandler}
-              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full transition-all duration-300 flex items-center"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center shadow-md"
             >
               <FiUser className="mr-2" /> Logout
             </button>
           ) : (
-            <Link
-              to="/login"
-              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full transition-all duration-300 flex items-center"
-            >
+            <Link to="/login" className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center shadow-md">
               <FiUser className="mr-2" /> Login
             </Link>
           )}
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden text-gray-300 hover:text-white text-3xl"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
+        <button className="lg:hidden text-gray-800 text-3xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <IoClose /> : <IoReorderThree />}
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-gray-800 px-4 py-6 animate-slide-down">
+        <div className="lg:hidden bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 border-t border-gray-200 px-6 py-4 shadow-md">
           <div className="flex flex-col space-y-4">
-            <Link
-              to="/"
-              className="text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-md transition-all duration-300 flex  items-center gap-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <CiHome /> Home
+            <Link to="/" className="text-gray-700 hover:text-purple-600 transition font-medium" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </Link>
+            <Link to="/about" className="text-gray-700 hover:text-purple-600 transition font-medium" onClick={() => setIsMenuOpen(false)}>
+              About
             </Link>
             {status && !admin && (
-              <Link
-                to="/order-page"
-                className="text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-md transition-all duration-300 flex items-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FiBox className="mr-2" /> Orders
+              <Link to={`/profile/${userInfo._id}`} className="text-gray-700 hover:text-purple-600 transition font-medium" onClick={() => setIsMenuOpen(false)}>
+                Profile
               </Link>
             )}
             {status && !admin && (
-              <Link
-                to="/cart"
-                className="text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-md transition-all duration-300 flex items-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FiShoppingCart className="mr-2" /> Cart
+              <Link to="/order-page" className="text-gray-700 hover:text-purple-600 transition font-medium" onClick={() => setIsMenuOpen(false)}>
+                Orders
+              </Link>
+            )}
+            {status && !admin && (
+              <Link to="/cart" className="text-gray-700 hover:text-purple-600 transition flex items-center font-medium" onClick={() => setIsMenuOpen(false)}>
+                <FiShoppingCart className="mr-1" /> Cart
               </Link>
             )}
             {admin && (
-              <Link
-                to="/admin"
-                className="text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-md transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <Link to="/admin" className="text-gray-700 hover:text-purple-600 transition font-medium" onClick={() => setIsMenuOpen(false)}>
                 Dashboard
               </Link>
             )}
@@ -153,16 +118,12 @@ const Header = () => {
                   logoutHandler();
                   setIsMenuOpen(false);
                 }}
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition-all duration-300 text-left flex items-center"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center shadow-md"
               >
                 <FiUser className="mr-2" /> Logout
               </button>
             ) : (
-              <Link
-                to="/login"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition-all duration-300 flex items-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <Link to="/login" className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center shadow-md" onClick={() => setIsMenuOpen(false)}>
                 <FiUser className="mr-2" /> Login
               </Link>
             )}

@@ -62,6 +62,80 @@ const createPost = asyncHandler(async (req, res) => {
        }
 })
 
+export const editPost = async(req,res) => {
+       const { postId,postContent,postTitle,postPrice } = req.body
+       
+       const admin = req.user
+       try {
+
+              if (!admin) {
+                     throw new ApiError(404, "admin not found")
+              }
+              if (!postId) {
+                     throw new ApiError(404, "post not found")
+              }
+              const post = await Post.findById(postId)
+              const postImagePath = req?.file?.path
+
+
+              const postImage = await uploadOnCloudinary(postImagePath)
+              const newpost = await Post.findByIdAndUpdate(postId,
+                     {
+                            $set : {
+                                   postContent : postContent || post.postContent,
+                                   postTitle : postTitle || post.postTitle,
+                                   postPrice : postPrice || post.postPrice,
+                                   postImage : postImage?.secure_url || post.postImage
+                            }
+                     }, {new :true}
+              )
+
+              if (!post) {
+                     throw new ApiError("Post not found . . .")
+              }
+              admin.posts = admin.posts.filter(id => id.toString() !== postId.toString())
+              await admin.save()
+              res.status(200).json({
+                     message: "post updated ",
+                     success: true,
+              })
+       } catch (error) {
+              res.json({
+                     message: error.message
+              })
+       }
+}
+export const changeOrderStatus = async(req,res) => {
+       const { status,orderId } = req.body
+       const admin = req.user
+       try {
+
+              if (!admin) {
+                     throw new ApiError(404, "admin not found")
+              }
+              if (!orderId) {
+                     throw new ApiError(404, "order not found")
+              }
+              const order = await Order.findById(orderId)
+              const newpost = await Order.findByIdAndUpdate(orderId,
+                     {
+                            $set : {
+                                   status
+                            }
+                     }, {new :true}
+              )
+
+              res.status(200).json({
+                     message: "status updated ",
+                     success: true,
+              })
+       } catch (error) {
+              res.json({
+                     message: error.message
+              })
+       }
+}
+
 const deletePost = asyncHandler(async (req, res) => {
        const { postId } = req.body
        
@@ -212,7 +286,6 @@ const getUserCartItem = asyncHandler(async (req, res) => {
 const orderItem = asyncHandler(async (req, res) => {
        const { postId, postPrice, quantity } = req.body
        const user = req.user
-
        try {
               if (!user) {
                      throw new ApiError(404, "user not found")
@@ -220,22 +293,23 @@ const orderItem = asyncHandler(async (req, res) => {
               if (!postId) {
                      throw new ApiError(404, "post not found")
               }
-
-              const admin = await Admin.findOne({ posts: postId })
+              // const admin = await Admin.findOne({ posts: postId })
               const p = await Post.findById(postId)
 
               if (!p) {
                      throw new ApiError("Post not found")
               }
-
+const admin = await Admin.findById(p.owner)
               const orderpost = await Order.create({
                      post: [
                             { post: postId },
                             { quantity: quantity || 1 }
                      ],
                      postPrice,
-                     user: user._id
+                     user: user._id,
+                     address:user.address
               })
+              // console.log(orderpost)
               user.order.push(orderpost._id)
               await user.save()
 

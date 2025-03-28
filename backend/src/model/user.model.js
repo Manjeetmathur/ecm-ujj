@@ -35,6 +35,12 @@ const userSchema = new Schema(
                             ref: "Order"
                      }
               ],
+              address: 
+                     {
+                           type:String
+                     }
+              ,
+              
        },
        {
               timestamps: true,

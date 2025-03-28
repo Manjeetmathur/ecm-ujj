@@ -10,6 +10,8 @@ import Admin from "../components/Admin/Admin";
 import Cart from "../components/Cart/Cart";
 import Explore from "../components/ExploreMore/Explore";
 import RouterProtector from "../components/RouterProtector/RouterProtector";
+import BuyPage from "../components/Order/BuyPages";
+import UserProfile from "../components/pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
        {
@@ -33,8 +35,16 @@ const router = createBrowserRouter([
                             element :<RouterProtector><Order/></RouterProtector> 
                      },
                      {
+                            path : "/buy/:id",
+                            element :<RouterProtector><BuyPage/></RouterProtector> 
+                     },
+                     {
                             path : "/cart",
                             element : <RouterProtector> <Cart/></RouterProtector>
+                     },
+                     {
+                            path : "/profile/:id",
+                            element : <RouterProtector> <UserProfile/></RouterProtector>
                      },
                      {
                             path : "/login",

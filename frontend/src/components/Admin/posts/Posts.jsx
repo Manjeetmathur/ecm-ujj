@@ -16,10 +16,41 @@ function Post({ post }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleSaveEdit = () => {
-    // console.log(editImage, editTitle, editContent, editPrice);
-    setIsMenuOpen(false);
+  const handleSaveEdit = async () => {
+    try {
+      const formdata = new FormData();
+      formdata.append("postId", post._id);
+      formdata.append("postTitle", editTitle);
+      formdata.append("postContent", editContent);
+      formdata.append("postPrice", editPrice);
+
+      // Append image only if there's a new file
+      if (editImage) {
+        formdata.append("postImage", editImage);
+      }
+
+      const { data } = await axios.patch(
+        `${url}/post/edit-post`,
+        formdata,
+        {
+          headers: { "Content-Type": "multipart/form-data" }, // Fix: Required for file uploads
+          withCredentials: true,
+        }
+      );
+
+      if (data.success) {
+        console.log("Post updated:", data);
+        window.location.reload(); // Reload to reflect changes
+      } else {
+        console.error("Error updating post:", data.message);
+      }
+    } catch (error) {
+      console.error("Failed to update post:", error);
+    } finally {
+      setIsMenuOpen(false);
+    }
   };
+
 
   const handleDelete = async () => {
     const postId = post._id;

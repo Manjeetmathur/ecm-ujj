@@ -86,7 +86,7 @@ const CartProduct = ({ product }) => {
         backgroundSize: "cover, 150px 150px",
       }}
     >
-      <div className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-300 w-full max-w-sm mx-auto relative z-10">
+      <div className="bg-gradient-to-br via-pink-200 from-purple-400 to-purple-400 rounded-xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-all duration-300 w-full max-w-sm mx-auto relative z-10">
         {/* Subtle Glow Effect */}
         <div className="absolute inset-0 -z-10 bg-blue-500/10 blur-3xl rounded-xl scale-105 animate-pulse-slow"></div>
 
@@ -105,15 +105,15 @@ const CartProduct = ({ product }) => {
 
           {/* Product Details */}
           <div className="flex flex-col items-center text-center space-y-3">
-            <h3 className="text-lg sm:text-xl font-semibold text-white truncate drop-shadow-md">
+            <h3 className="text-lg sm:text-xl font-semibold  truncate drop-shadow-md">
               {postData?.postTitle || "Product Title"}
             </h3>
-            <p className="text-lg font-bold text-blue-400 drop-shadow-sm">
+            <p className="text-lg font-bold text-blue-900 drop-shadow-sm">
               ${postData?.postPrice?.toFixed(2) || "N/A"}
             </p>
 
             {/* Quantity Selector */}
-            <div className="flex items-center justify-center gap-2 bg-gray-600/50 rounded-full px-3 py-1.5 w-fit shadow-inner">
+            <div className="flex items-center justify-center gap-2 bg-pink-600/50 rounded-full px-3 py-1.5 w-fit shadow-inner">
               <button
                 onClick={handleDecrement}
                 className="text-gray-300 hover:text-blue-400 text-xl font-bold disabled:opacity-50 transition-colors duration-300"
@@ -133,15 +133,14 @@ const CartProduct = ({ product }) => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4 w-full">
               <button
-                onClick={buyItem}
                 className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-300 text-sm sm:text-base font-medium disabled:bg-blue-400 disabled:cursor-not-allowed w-full sm:w-auto shadow-md hover:shadow-lg"
                 disabled={bloading}
               >
-                {bloading ? "Processing..." : "Buy Now"}
+                <Link to={`/buy/${postData._id}`}>Buy Now</Link>
               </button>
               <button
                 onClick={removeToCart}
-                className="bg-gray-900/50 text-red-400 px-4 py-2 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 text-sm sm:text-base font-medium disabled:bg-gray-600 disabled:cursor-not-allowed w-full sm:w-auto shadow-md hover:shadow-lg"
+                className="bg-red-400  px-4 py-2 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 text-sm sm:text-base font-medium disabled:bg-gray-600 disabled:cursor-not-allowed w-full sm:w-auto shadow-md hover:shadow-lg"
                 disabled={cloading}
               >
                 {cloading ? "Removing..." : "Remove"}
