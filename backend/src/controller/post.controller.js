@@ -308,7 +308,8 @@ const admin = await Admin.findById(p.owner)
                      ],
                      postPrice,
                      user: user._id,
-                     address:user.address
+                     address:user.address,
+                     phone : user.phone
               })
               // console.log(orderpost)
               user.order.push(orderpost._id)

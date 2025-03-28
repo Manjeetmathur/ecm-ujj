@@ -187,6 +187,29 @@ const addAddress = asyncHandler(async (req, res) => {
     })
   }
 })
+export const phoneNo = asyncHandler(async (req, res) => {
+  const { phone } = req.body
+
+  try {
+    const user = req.user
+
+    await User.findByIdAndUpdate(user._id, {
+      $set: {
+        phone
+      },
+
+    }, { new: true })
+    res.status(200).json({
+      message: "phone updated",
+      success: true
+    })
+
+  } catch (error) {
+    res.json({
+      message: error.message,
+    })
+  }
+})
 
 const getUserDetails = asyncHandler(async (req, res) => {
   let user = req.user

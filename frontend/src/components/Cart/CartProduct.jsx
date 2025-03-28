@@ -105,7 +105,7 @@ const CartProduct = ({ product }) => {
 
           {/* Product Details */}
           <div className="flex flex-col items-center text-center space-y-3">
-            <h3 className="text-lg sm:text-xl font-semibold  truncate drop-shadow-md">
+            <h3 className="text-lg sm:text-xl font-semibold  truncate drop-shadow-md text-wrap">
               {postData?.postTitle || "Product Title"}
             </h3>
             <p className="text-lg font-bold text-blue-900 drop-shadow-sm">
