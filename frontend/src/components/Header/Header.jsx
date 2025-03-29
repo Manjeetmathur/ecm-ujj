@@ -18,6 +18,8 @@ const Header = () => {
 
   const logoutHandler = async () => {
     try {
+      dispatch(logout());
+      navigate("/login")
       const { data } = await axios.get(`${url}/user/logout`, { withCredentials: true });
       if (data.success) {
         dispatch(logout());
