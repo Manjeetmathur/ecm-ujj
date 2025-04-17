@@ -14,8 +14,7 @@ const BuyPage = () => {
        const { userInfo } = useSelector((state) => state.auth);
        const [bloading, setbLoading] = useState(false);
        const [paymentMethod, setPaymentMethod] = useState("cod");
-       console.log(userInfo);
-
+console.log(userInfo)
        useEffect(() => {
               const fetchProduct = async () => {
                      try {
@@ -39,11 +38,11 @@ const BuyPage = () => {
 
        const orderItem = async () => {
               try {
-                     if (userInfo?.address.length > 4) {
+                     if (userInfo?.address?.length > 4) {
                             setbLoading(true);
                             const response = await axios.post(
                                    `${url}/post/order-item`,
-                                   { postId: product._id, postPrice: product.postPrice, quantity, paymentMethod },
+                                   { postId: product?._id, postPrice: product.postPrice, quantity, paymentMethod },
                                    {
                                           withCredentials: true,
                                           headers: { "content-type": "application/json" },

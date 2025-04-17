@@ -73,7 +73,7 @@ const PostItem = () => {
     } finally {
       setcLoading(false);
     }
-  };
+''  };
 
   const openWhatsapp = () => {
     const phoneNumber = "6287773228";

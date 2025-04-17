@@ -20,7 +20,7 @@ const Admin = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 flex flex-col relative overflow-hidden"
+      className="min-h-screen  bg-gradient-to-br from-pink-300 via-purple-300 to-blue-400 flex flex-col relative overflow-hidden"
       id="admin-dash"
     >
       {/* Subtle Texture Overlay */}
@@ -32,7 +32,7 @@ const Admin = () => {
       ></div>
 
       {/* Top Navigation */}
-      <div className="bg-gray-800/80 backdrop-blur-md shadow-lg p-4 flex justify-center gap-4 sm:gap-6 mt-5 mx-4 sm:mx-auto rounded-full z-20">
+      <div className=" bg-gradient-to-br from-pink-600 via-purple-500 to-blue-600  backdrop-blur-md shadow-lg p-4 flex justify-center gap-4 sm:gap-6 mt-5 mx-4 sm:mx-auto rounded-full z-20">
         {[
           { name: "Posts", value: "posts" },
           { name: "Create", value: "create-product" },
@@ -44,7 +44,7 @@ const Admin = () => {
             className={`px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium transition-all duration-300 cursor-pointer ${
               active === item.value
                 ? "bg-blue-600 text-white shadow-md"
-                : "text-gray-300 hover:bg-gray-700 hover:text-blue-400"
+                : "text-gray-300 hover:bg-blue-100 hover:text-black"
             }`}
           >
             {item.name}
@@ -53,7 +53,7 @@ const Admin = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 m-3 bg-gray-800/30 rounded-xl backdrop-blur-md shadow-lg relative z-10">
+      <div className="flex-1 m-3 relative z-10">
         <div className="min-h-[calc(100vh-12rem)]">
           {active === "create-product" && <CreateProduct />}
           {active === "orders" && (

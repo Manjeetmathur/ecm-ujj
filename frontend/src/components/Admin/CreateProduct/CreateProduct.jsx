@@ -48,8 +48,8 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
-      <div className="w-full max-w-2xl p-6 bg-gray-800 shadow-xl rounded-2xl backdrop-blur-md border border-gray-700">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-600 via-purple-500 to-pink-600 rounded-xl mb-5">
+      <div className="w-full max-w-2xl p-6  ">
         <h2 className="text-3xl font-bold text-white text-center mb-6">Create Post</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Image Upload */}
@@ -63,7 +63,7 @@ const CreateProduct = () => {
               name="postImage"
               required
               onChange={(e) => setImage(e.target.files?.[0])}
-              className="mt-1 w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -79,7 +79,7 @@ const CreateProduct = () => {
               required
               value={postTitle}
               onChange={(e) => setpostTitle(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -94,7 +94,7 @@ const CreateProduct = () => {
               required
               value={postContent}
               onChange={(e) => setpostContent(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 h-32 resize-none"
+              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 h-32 resize-none"
             />
           </div>
 
@@ -110,7 +110,7 @@ const CreateProduct = () => {
               required
               value={postPrice}
               onChange={(e) => setpostPrice(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -125,7 +125,7 @@ const CreateProduct = () => {
               required
               value={postCategory}
               onChange={(e) => setpostCategory(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="" disabled>Select Category</option>
               <option value="smartphones">Smartphones</option>

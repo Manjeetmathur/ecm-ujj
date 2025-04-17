@@ -76,7 +76,7 @@ function Post({ post }) {
   };
 
   return (
-    <div className="bg-gray-800 shadow-lg rounded-xl overflow-hidden p-6 relative transition-transform duration-300 hover:scale-[1.02]">
+    <div className="bg-gradient-to-br from-pink-600 via-purple-500 to-blue-600  shadow-lg rounded-xl overflow-hidden p-6 relative transition-transform duration-300 hover:scale-[1.02]">
       {/* Post Header */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold text-white">{post?.postTitle}</h2>
