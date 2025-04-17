@@ -39,7 +39,6 @@ function Post({ post }) {
       );
 
       if (data.success) {
-        console.log("Post updated:", data);
         window.location.reload(); // Reload to reflect changes
       } else {
         console.error("Error updating post:", data.message);

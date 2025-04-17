@@ -23,13 +23,12 @@ const CreateProduct = () => {
       formData.append("postContent", postContent);
       formData.append("postPrice", postPrice);
       formData.append("postCategory", postCategory);
-
-      const { data } = await axios.post(`${url}/post/create-post`, formData, {
+      const  {data}  = await axios.post(`${url}/post/create-post`, formData, {
         headers: { "content-type": "multipart/form-data" },
         withCredentials: true,
         withXRFToken: true,
       });
-
+console.log(data)
       if (data.success) {
         toast.success(data.message);
         setImage("");
@@ -50,7 +49,7 @@ const CreateProduct = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-600 via-purple-500 to-pink-600 rounded-xl mb-5">
       <div className="w-full max-w-2xl p-6  ">
-        <h2 className="text-3xl font-bold text-white text-center mb-6">Create Post</h2>
+        <h2 className="text-3xl font-bold  text-center mb-6">Create Post</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Image Upload */}
           <div>
@@ -63,7 +62,7 @@ const CreateProduct = () => {
               name="postImage"
               required
               onChange={(e) => setImage(e.target.files?.[0])}
-              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border   rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -79,7 +78,7 @@ const CreateProduct = () => {
               required
               value={postTitle}
               onChange={(e) => setpostTitle(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border   rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -94,7 +93,7 @@ const CreateProduct = () => {
               required
               value={postContent}
               onChange={(e) => setpostContent(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 h-32 resize-none"
+              className="mt-1 w-full px-3 py-2 border   rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 h-32 resize-none"
             />
           </div>
 
@@ -110,7 +109,7 @@ const CreateProduct = () => {
               required
               value={postPrice}
               onChange={(e) => setpostPrice(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border   rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -125,7 +124,7 @@ const CreateProduct = () => {
               required
               value={postCategory}
               onChange={(e) => setpostCategory(e.target.value)}
-              className="mt-1 w-full px-3 py-2 border  text-white rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-3 py-2 border   rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="" disabled>Select Category</option>
               <option value="smartphones">Smartphones</option>
@@ -138,12 +137,12 @@ const CreateProduct = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition"
+            className="w-full flex justify-center items-center bg-blue-600 hover:bg-blue-700  font-bold py-3 px-4 rounded-lg transition"
           >
             {loading ? (
               <div className="flex items-center gap-2">
                 <svg
-                  className="animate-spin h-5 w-5 text-white"
+                  className="animate-spin h-5 w-5 "
                   viewBox="0 0 24 24"
                 >
                   <circle
